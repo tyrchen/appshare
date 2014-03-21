@@ -3,6 +3,8 @@ App Share
 
 very simple web application proxy for making your local development environment accessible in internet. Good for demostration or debugging purpose.
 
+Note: this project is not finished - it's buggy, lack of below features, wtf everywhere, etc. Right now it only proves my concept. See: [vagrant share analysis](http://zhuanlan.zhihu.com/prattle/19707255) (in Chinese). Use the code at your own risk.
+
 Usage
 ------
 
