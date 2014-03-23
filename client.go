@@ -63,8 +63,8 @@ func dialToWebServer(connStr string, remote net.Conn) {
 }
 
 func main() {
-	if len(os.Args) != 3 {
-		fmt.Printf("Usage: %s <port for server> <port for web server>\n", os.Args[0])
+	if len(os.Args) != 4 {
+		fmt.Printf("Usage: %s <control port for server> <data port for server> <port for web server>\n", os.Args[0])
 		os.Exit(-1)
 	}
 

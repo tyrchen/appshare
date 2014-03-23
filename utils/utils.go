@@ -3,10 +3,20 @@ package utils
 import (
 	"crypto/sha1"
 	"encoding/base64"
+	"fmt"
+	"github.com/tyrchen/goutil/uniq"
 	"io"
 	"net"
 	"regexp"
 )
+
+const (
+	NAME_PREFIX = "appshare"
+)
+
+func GetUniqName() string {
+	return fmt.Sprintf("%s-%d", NAME_PREFIX, uniq.GetUniq())
+}
 
 func Forward(local net.Conn, remote net.Conn) {
 	go io.Copy(local, remote)
@@ -27,6 +37,6 @@ func Hash(content string) string {
 	return base64.StdEncoding.EncodeToString(h.Sum(nil))
 }
 
-func HashEqual(content string, sha1base64 string) {
+func HashEqual(content string, sha1base64 string) bool {
 	return Hash(content) == sha1base64
 }

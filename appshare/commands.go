@@ -1,8 +1,7 @@
-package chat
+package appshare
 
 import (
 	"errors"
-	"fmt"
 	"github.com/tyrchen/goutil/regex"
 	"regexp"
 )
@@ -24,8 +23,8 @@ var (
 
 func init() {
 	commands = map[string]Run{
-		"name": changeName,
-		"quit": quit,
+		"Name": setName,
+		"Conn": createConnection,
 	}
 }
 
@@ -52,13 +51,10 @@ func (self *Server) executeCommand(client *Client, cmd Command) (err error) {
 
 // commands
 
-func changeName(server *Server, client *Client, arg string) {
-	oldname := client.GetName()
+func setName(server *Server, client *Client, arg string) {
+	//oldname := client.GetName()
 	client.SetName(arg)
-	server.broadcast(fmt.Sprintf("Notification: %s changed its name to %s", oldname, arg))
 }
 
-func quit(server *Server, client *Client, arg string) {
-	client.quit()
-	server.broadcast(fmt.Sprintf("Notification: %s quit the chat room.", client.GetName()))
+func createConnection(server *Server, client *Client, arg string) {
 }
